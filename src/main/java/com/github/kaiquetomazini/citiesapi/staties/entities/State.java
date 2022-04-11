@@ -7,12 +7,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 import org.hibernate.annotations.TypeDefs;
 
+import com.github.kaiquetomazini.citiesapi.countries.entities.Country;
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 
 @Entity(name = "State")
@@ -34,8 +37,13 @@ public class State {
 	
 	private Integer ibge;
 	
-	@Column(name = "pais")
-	private Integer countryId;
+	/*
+	 * @Column(name = "pais") private Integer countryId;
+	 */
+	
+	@ManyToOne
+	@JoinColumn(name = "pais", referencedColumnName = "id")
+	private Country country;
 	
 	@Type(type = "jsonb")
 	@Basic(fetch = FetchType.LAZY)
@@ -66,8 +74,12 @@ public class State {
 		return ddd;
 	}
 	
-	public Integer getCountryId() {
-		return countryId;
-	}	
+	/*
+	 * public Integer getCountryId() { return countryId; }
+	 */
+	
+	public Country getCountry() {
+		return country;
+	}
 	
 }
