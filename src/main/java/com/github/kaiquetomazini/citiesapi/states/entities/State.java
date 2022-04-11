@@ -1,4 +1,4 @@
-package com.github.kaiquetomazini.citiesapi.staties.entities;
+package com.github.kaiquetomazini.citiesapi.states.entities;
 
 import java.util.List;
 
