@@ -25,7 +25,7 @@ public class CountryResource {
 	private CountryRepository repository;
 	
 	@GetMapping
-	public Page <Country> getDBCountries(Pageable page) {
+	public Page<Country> getDBCountries(Pageable page) {
 		return repository.findAll(page);
 	}
 	
